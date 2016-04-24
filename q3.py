@@ -24,6 +24,7 @@ def solution(s):
 			print j
 			current_max = max(j-i, current_max)
 		else:
+			# hashset.remove(s[i])
 			i += 1
 			hashset = hashset[i:j]
 	return current_max
