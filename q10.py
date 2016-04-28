@@ -1,43 +1,19 @@
-class Solution(object):
+# ref: http://www.cnblogs.com/zuoyuan/p/3781773.html
+class Solution:
+    # @return a boolean
     def isMatch(self, s, p):
-        """
-        :type s: str
-        :type p: str
-        :rtype: bool
-        """
-        arr_s = []
-        arr_p = []
-        # no "*" or "." in string inputs:
-        if (not "*" in s) and (not "." in s) and (not "*" in p) and (not "." in p):
-            if s == p :
-                return True
-            else:
-                return False
-        elif (s[0] == "*") or (p[0] == "*"):
-            return False
-        else:
-            if ( ".*" in s ) or (".*" in p):
-                return True
-            else:
-                i = 0
-                while i < len(s) :
-                    arr_s.append(s[i])
-                    if (i+1 < len(s)) and (s[i+1] == "*"):
-                        arr_s.append(s[i])
-                        i += 2
-                    else:
-                        i += 1
-                        
-                j = 0
-                while j < len(p) :
-                    arr_p.append(p[j])
-                    if (j+1 < len(p)) and (p[j+1] == "*"):
-                        arr_p.append(p[j])
-                        j += 2                   
-                    else:
-                        j += 1
-                    
-                if (set(arr_s) > set(arr_p)) or (set(arr_s) < set(arr_p)) :
-                    return True
+        dp=[[False for i in range(len(p)+1)] for j in range(len(s)+1)]
+        dp[0][0]=True
+        for i in range(1,len(p)+1):
+            if p[i-1]=='*':
+                if i>=2:
+                    dp[0][i]=dp[0][i-2]
+        for i in range(1,len(s)+1):
+            for j in range(1,len(p)+1):
+                if p[j-1]=='.':
+                    dp[i][j]=dp[i-1][j-1]
+                elif p[j-1]=='*':
+                    dp[i][j]=dp[i][j-1] or dp[i][j-2] or (dp[i-1][j] and (s[i-1]==p[j-2] or p[j-2]=='.'))
                 else:
-                    return False
+                    dp[i][j]=dp[i-1][j-1] and s[i-1]==p[j-1]
+        return dp[len(s)][len(p)]
