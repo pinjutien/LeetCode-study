@@ -49,6 +49,34 @@ node *insert(node *node_temp, int item) {
 	return node_temp;
 }
 
+//http://www.geeksforgeeks.org/618/
+void inorder(node *root) {
+  if (root !=NULL) {
+    inorder(root->left);
+    cout << root->key << "\n";
+    inorder(root->right); 
+  }
+}
+
+
+void preorder(node *root) {
+  if (root !=NULL) {
+    cout << root->key << "\n";
+    preorder(root->left);
+    preorder(root->right); 
+  }
+}
+
+
+void portorder(node *root) {
+  if (root !=NULL) {
+    postorder(root->left);
+    postorder(root->right); 
+    cout << root->key << "\n";
+  }
+}
+
+
 
 int main() {
 	
