@@ -55,6 +55,13 @@ int RabinKarp(const string &text, const string &pattern) {
 
 int main() {
 	
+	string text = "abc";
+	string pattern = "ab";
+	
+	int match_index;
+	match_index = RabinKarp(text, pattern);
+	
+	cout << "match index: " << match_index << "\n";
 	
 	
 }
