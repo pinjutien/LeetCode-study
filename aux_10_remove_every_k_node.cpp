@@ -10,43 +10,46 @@ struct node {
 	node *next;
 };
 
+
 node *deleteK(node *root, int K) {
-	
-	if (root == NULL) return root;
-	
 	node *temp = root;
-	node *prev = NULL;
-	int count = 1;
-	while(temp !=NULL) {
-		
-		if (count == K-1) {
-			prev = temp;
+	node *ptr;
+	int count;
+	
+	if ((root == NULL) || (K ==0)) return root;
+	
+	if (K ==1) {
+		while (root !=NULL) {
+			// ptr = root;
+			root = root->next;
+			// free(ptr);
 		}
-		
-		if (count == K) {
-			if (temp->next != NULL) {
-				prev->next = temp->next;
-				temp = prev->next;
-				free(prev);
-			}
-			else {
-				// testing now
-				temp = prev;
-			}
-			
-			count = 1;
-			
-		}
-		else {
-			
-			if (temp->next != NULL) {
-				temp = temp->next;
-			}
-			count += 1;
-		}
+		return root;
 	}
+	
+	while ((temp !=NULL) && (temp->next !=NULL)) {
+		count = K-1;
+		// keep proceeding and stop at the previous step of the Kth node.
+		while ((count != 1) && (temp ->next != NULL)) {
+			temp = temp->next;
+			count -= 1;
+		}
+		
+		if (temp->next == NULL) {
+			break;
+		}
+		
+		// count =1: temp->next is the node we want to remove. 
+		ptr = temp->next;
+		temp->next = ptr->next;
+		free(ptr);
+		temp = temp->next;
+		
+	}
+	
 	return root;
 }
+
 
 
 void push(node **root, int x) {
@@ -79,6 +82,7 @@ int main() {
 	push(&root, 1);
 	
 	result_temp = deleteK(root, 3);
+	// result_temp = deleteK(root, 1);
 	printLL(result_temp);
 	return 0;
 }
