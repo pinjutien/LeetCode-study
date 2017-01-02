@@ -68,7 +68,7 @@ void preorder(node *root) {
 }
 
 
-void portorder(node *root) {
+void postorder(node *root) {
   if (root !=NULL) {
     postorder(root->left);
     postorder(root->right); 
