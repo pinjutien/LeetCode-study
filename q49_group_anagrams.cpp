@@ -11,8 +11,8 @@ vector<vector<string>> groupAnagrams(vector<string>& strs) {
   unordered_map<string, vector<int>> string_dict;
   string str_temp;
   for (int i = 0; i < strs.size(); i++) {
-    sort(strs[i].begin(), strs[i].end());
     str_temp = strs[i];
+    sort(str_temp.begin(), str_temp.end());    
     string_dict[str_temp].push_back(i);
   }
     
