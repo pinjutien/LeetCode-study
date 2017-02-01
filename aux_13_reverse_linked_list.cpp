@@ -7,6 +7,7 @@ using namespace std;
 struct node {
   int element;
   node *next;
+  node(int x): element(x), next(NULL) {}
 };
 
 void resever_linked_list(node **root) {
