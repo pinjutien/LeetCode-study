@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 // ref: https://github.com/zrwwzr/Leetcode-Amazon/blob/master/Reverse%20Second%20Half%20of%20Linked%20List.cpp
 
 struct node {
