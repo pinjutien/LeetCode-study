@@ -3,7 +3,7 @@ import pandas as pd
 
 
 # https://www.cs.princeton.edu/~rs/AlgsDS07/01UnionFind.pdf
-class Uion_find(object):
+class Union_find(object):
 
     def __init__(self, input_data):
         # input_data: always starting from 0
@@ -55,8 +55,8 @@ if __name__ == "__main__":
     friend_union = Union_find(list(range(n_people)))
 
     for i in range(n_people):
-        for j in range(n_people):
-            if friend_matrix[[i, j]] == 1:
+        for j in range(i+1, n_people):
+            if (friend_matrix[i, j] == 1):
                 friend_union.unite(i,j)
             
-    print("number of friend circle: "friend_union.count_circle())
+    print("number of friend circle: ", friend_union.count_circle())
