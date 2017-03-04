@@ -1,5 +1,8 @@
 import numpy as np
 
+'''
+ref: https://www.careercup.com/question?id=5734224617275392
+'''
 
 def longest_chain(input_data):
     
