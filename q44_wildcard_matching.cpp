@@ -84,8 +84,7 @@ bool is_match(string text, string pattern, int text_size, int pattern_size) {
     pattern = " " + pattern;
     
     for (int j = 1; j <= pattern_size; j++) {
-        // note: the index of pattern start from 0
-        // so, (j-1)th index in pattern corresponds to j-th in table T.
+        // j-th index in pattern corresponds to j-th in table T.
         if (pattern[j] == '*') {
             T[0][j] = T[0][j-1];
         }
