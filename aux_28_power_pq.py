@@ -8,7 +8,8 @@ def power(p, q):
 
     q_temp = q
     while (q_temp > 0):
-        if (q_temp & 1 == 1):
+        
+        if (q_temp & 1 > 0):
             result *= p
 
         p *= p
@@ -19,4 +20,4 @@ def power(p, q):
 
 
 if __name__ == '__main__':
-    print(power(5, 4))
+    print(power(5, 5))
