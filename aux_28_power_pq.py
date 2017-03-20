@@ -8,8 +8,9 @@ def power(p, q):
 
     q_temp = q
     while (q_temp > 0):
-        
+        import pdb; pdb.set_trace()
         if (q_temp & 1 > 0):
+            print (q_temp)
             result *= p
 
         p *= p
@@ -20,4 +21,4 @@ def power(p, q):
 
 
 if __name__ == '__main__':
-    print(power(5, 5))
+    print(power(2, 6))
